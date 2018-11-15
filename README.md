@@ -24,7 +24,7 @@ Disciplina: Sistemas Distribuídos
 
     `java -cp . ServidorMestre`
 
-2. Executar o Servidor, passando os parâmetros nome do serviço, porta, endereço IP da máquina, respectivamente, por exemplo:
+2. Executar o Servidor, passando os parâmetros nome do serviço, porta, endereço IP da máquina, respectivamente. Por exemplo:
 
   2.1. Exemplo 1: `java -cp . Servidor Server1 1234 192.168.0.11`
 
