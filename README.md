@@ -14,15 +14,15 @@ Disciplina: Sistemas Distribuídos
 
 ## Instruções para compilação
 
-1o.) Compilar todas as classes Java com o seguinte comando:
+1. Compilar todas as classes Java com o seguinte comando:
 
-    javac *.java
+    `javac *.java`
 
 ## Instruções para execução
 
 1. Executar o Servidor Mestre:
 
-    java -cp . ServidorMestre
+    `java -cp . ServidorMestre`
 
 2. Executar o Servidor, passando os parâmetros nome do serviço, porta, endereço IP da máquina, respectivamente, por exemplo:
 
@@ -30,9 +30,9 @@ Disciplina: Sistemas Distribuídos
 
   2.1. Exemplo 2: `java -cp . Servidor Server2 4321 192.168.0.11`
 
-3. Execute a aplicação cliente:
+3. Executar a aplicação cliente:
 
-    java -cp . Cliente
+    `java -cp . Cliente`
 
 ## Instruções para testes 
 
