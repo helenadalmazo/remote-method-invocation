@@ -12,5 +12,4 @@ public interface ServicoMestre extends Remote {
 	void registerServer(String host, String serverName, Integer port) throws RemoteException;
 
 	List<ServicoModel> getServers() throws RemoteException;
-
 }
