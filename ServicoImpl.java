@@ -7,17 +7,17 @@ import java.rmi.registry.*;
 import java.net.*;
 
 public class ServicoImpl implements Servico {
-    
-    public ServicoImpl() throws RemoteException{
-        super();
-    }
-
-    @Override
-    public String echo(String nomeCliente, String mensagem) throws RemoteException {
-    	saveHistoryOnOthersServers(nomeCliente, mensagem);
-        return "> " + mensagem;
-    }
-
+	
+	public ServicoImpl() throws RemoteException {
+		super();
+	}
+	
+	@Override
+	public String echo(String nomeCliente, String mensagem) throws RemoteException {
+		saveHistoryOnOthersServers(nomeCliente, mensagem);
+		return "> " + mensagem;
+	}
+	
 	@Override
 	public List<String> getListOfMsg(String nomeCliente) throws RemoteException {
 		return mapaMensagens.get(nomeCliente);
@@ -36,18 +36,18 @@ public class ServicoImpl implements Servico {
 		try {
 			Registry registryMasterServer = LocateRegistry.getRegistry("127.0.0.1", 9999);
 			ServicoMestre stubMasterServer = (ServicoMestre) registryMasterServer.lookup("MasterServer");
-	    	System.out.println("server availables: " + stubMasterServer.getServers());
-	    	
-	    	for (ServicoModel sm : stubMasterServer.getServers()) {
-	    		try {
-		    		System.out.println("tentando conexao com o servidor: " + sm);
-		    	    Registry registryServer= LocateRegistry.getRegistry(sm.getHost(), sm.getPort());
+			System.out.println("server availables: " + stubMasterServer.getServers());
+			
+			for (ServicoModel sm : stubMasterServer.getServers()) {
+				try {
+					System.out.println("tentando conexao com o servidor: " + sm);
+					Registry registryServer= LocateRegistry.getRegistry(sm.getHost(), sm.getPort());
 					Servico stubServer = (Servico) registryServer.lookup(sm.getServerName());
 					stubServer.addNewMessage(nomeCliente, mensagem);
-	    		} catch (Exception e) {
+				} catch (Exception e) {
 					// TODO: handle exception
 				}
-	    	}
+			}
 		} catch (Exception e) {
 			System.out.println("MasterServer not available");
 		}		

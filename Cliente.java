@@ -6,23 +6,21 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Cliente {
-
+	
 	static Servico stubServer;
 	
-    public static void main(String args[]) {
-
-        try {
-        	getAvailableServer();
-        	
-        	Scanner scan = new Scanner(System.in);
-        	Scanner scan1 = new Scanner(System.in);
-        	String mensagem = "";
-        	int opcao;
-        	
-        	boolean retry = false;
+	public static void main(String args[]) {
+		try {
+			getAvailableServer();
+			
+			Scanner scan = new Scanner(System.in);
+			Scanner scan1 = new Scanner(System.in);
+			String mensagem = "";
+			int opcao;
+			
+			boolean retry = false;
 			
 			while(true) {
-
 				if (retry) {
 					String retorno = stubServer.echo("cliente1", mensagem);
 					System.out.println(retorno);
@@ -44,11 +42,11 @@ public class Cliente {
 						mensagem = scan1.nextLine();
 						String retorno = stubServer.echo("cliente1", mensagem);
 						System.out.println(retorno);
-					} 
+					}
 					else if (opcao == 2) {
 						List<String> retorno =stubServer.getListOfMsg("cliente1");
 						System.out.println(retorno);
-					} 
+					}
 					else {
 						System.out.println("Ops, tente uma nova opcao.");
 					}
@@ -61,17 +59,17 @@ public class Cliente {
 				}
 			}
 			
-        } catch(Exception e) {
-        	e.printStackTrace();
-        }
-        System.exit(0);
-    }
-    
-    public static ServicoModel getAvailableServer() {
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		System.exit(0);
+	}
+	
+	public static ServicoModel getAvailableServer() {
 		try {
 			Registry registryMasterServer = LocateRegistry.getRegistry("127.0.0.1", 9999);
 			ServicoMestre stubMasterServer = (ServicoMestre) registryMasterServer.lookup("MasterServer");
-
+			
 			for (ServicoModel sm : stubMasterServer.getServers()) {
 				try {
 					Registry registryServer= LocateRegistry.getRegistry(sm.getHost(), sm.getPort());
@@ -80,12 +78,10 @@ public class Cliente {
 				} catch (Exception e) {
 					System.out.println(sm + " not available");
 				}
-				
-	    	}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return null;
     }
 }

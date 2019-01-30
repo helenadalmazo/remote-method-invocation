@@ -1,7 +1,7 @@
 import java.io.Serializable;
 
 public class ServicoModel implements Serializable {
-
+	
 	private String host;
 	private String serverName;
 	private Integer port;

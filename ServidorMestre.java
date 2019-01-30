@@ -7,13 +7,12 @@ public class ServidorMestre {
 		try {
 			ServicoMestreImpl server = new ServicoMestreImpl();
 			ServicoMestre stub = (ServicoMestre) UnicastRemoteObject.exportObject(server, 0);
-	        Registry registry = LocateRegistry.createRegistry(9999);
-	        registry.rebind("MasterServer", stub);
-	
-	        System.out.println("MasterServer running on port 9999");
-	       
+			Registry registry = LocateRegistry.createRegistry(9999);
+			registry.rebind("MasterServer", stub);
+			
+			System.out.println("MasterServer running on port 9999");
 	    } catch(Exception e) {
-	        e.printStackTrace();
+			e.printStackTrace();
 	    }
 	}
 }

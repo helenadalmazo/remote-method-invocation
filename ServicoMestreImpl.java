@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 public class ServicoMestreImpl implements ServicoMestre {
-
-	public ServicoMestreImpl() throws RemoteException{
-        super();
-    }
+	
+	public ServicoMestreImpl() throws RemoteException {
+		super();
+	}
 	
 	@Override
 	public void registerServer(String host, String serverName, Integer port) throws RemoteException {
