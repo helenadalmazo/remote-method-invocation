@@ -36,6 +36,6 @@ Disciplina: Sistemas Distribuídos
 
 ## Instruções para testes 
 
-1. Ecoar algumas mensagems e visualizar o histórico.
+1. Ecoar algumas mensagens e visualizar o histórico.
 2. Derrubar o Server1 e tentar ecoar mensagens.
 3. Derrubar o Cliente, executá-lo novamente e visualizar o histórico.
